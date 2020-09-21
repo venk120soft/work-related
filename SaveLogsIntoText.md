@@ -12,7 +12,7 @@ For logging errors
       });
 
       if (error !== '') {
-        writeFile(`./e2e/teams-apps/consent-logs/${fileName}.txt`, error, (er) => {
+        writeFile(`./logs/${fileName}.txt`, error, (er) => {
           if (er) e2eLogger('eroor in writing to the file: ' + er.message);
         });
       }
