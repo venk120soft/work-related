@@ -1,4 +1,5 @@
 For logging errors
+https://www.thecrazyprogrammer.com/2019/12/javascript-read-and-write-to-text-file.html
 
 ```javascript
  public static logErrors = async (fileName: string) => {
