@@ -8,15 +8,6 @@ export function e2eLogger(message: string) {
   console.log('#### ' + message + ' ####');
 }
 
-/**
- * Policy types are already declared in policy-types.ts but E2E doesn't have access to this file in
- * running time so we need to place here again
- */
-export enum PolicyFormLayout {
-  Form,
-  Panel
-}
-
 export interface IFieldData {
   id: string;
   value: string | boolean;
@@ -112,13 +103,6 @@ export class HtmlUtil {
     }
   }
   
-  /**
-   * Cancel the form when the policy is not a flexpane
-   */
-  public async cancelForm() {
-    await this.click('[data-testid="cancelFormButton"]');
-  }
-
   public async cancelWithConfirm() {
     await this.cancelFlexPanel();
     await htmlUtil.click('[data-testid="confirmDialogButton"]');
@@ -535,7 +519,7 @@ export class HtmlUtil {
 export let htmlUtil = new HtmlUtil();
 
 /**
- * @sideNavbarSelector If there is not a table in the moment that this function execute, then you need to pass
+ * If there is not a table in the moment that this function execute, then you need to pass
  * sideNavbarSelector, otherwise will assume there is a table present.
  */
 export async function testLazyLoading(sideNavbarSelectors?: string[]) {
@@ -571,7 +555,6 @@ export async function testLazyLoading(sideNavbarSelectors?: string[]) {
   // we need to scroll up so everything is normal again
   const offsetUp = await browser.executeScript('return arguments[0].offsetTop;', firstRow.getWebElement());
   await browser.executeScript('arguments[0].scrollTop = arguments[1];', div.getWebElement(), offsetUp);
-
   await htmlUtil.waitForLoading();
 
   return result;
