@@ -69,7 +69,7 @@ export class HtmlUtil {
 
   /**
    * Generic logic to fill out a form with passed data
-   * @param formMapping Array of IFieldData contains infromation about field's selector, value and type
+   * formMapping Array of IFieldData contains infromation about field's selector, value and type
    */
   public async fillOutForm(formMapping: IFieldData[]) {
     // Await for all fields to be loaded
@@ -202,7 +202,7 @@ export class HtmlUtil {
 
     await htmlUtil.waitForLoading();
 
-    // MoPo fails often when we click some side nav bar redirecting to the dashboard we would try
+    // Portal fails often when we click some side nav bar redirecting to the dashboard we would try
     // until this get fixed
     if ((await htmlUtil.getUrl()) === 'https://test.net/dashboard' ||
         (await htmlUtil.getUrl()) === 'https://test.net/dashboard'
