@@ -23,23 +23,6 @@ export interface IFieldData {
   type?: 'input' | 'nonEmptyInput' | 'dropdown' | 'toggle';
 }
 export class HtmlUtil {
-  public static CLONE_SUFFIX = ' copy';
-  public static defaultSearchCriteria = 'test';
-  public static tableRowCheckMarkSelector: string = '[class*="data-table-new__tableRowCell"]';
-  public static tableHeaderSelector: string = '[class*="data-table-new__headerCell"]';
-  public static customizeColumnsButton = 'div#commandBarIconSettings';
-  public static saveFormButtonSelector = '[data-testid="saveFormButton"]';
-  public static clearSearchButton: string = '.ms-SearchBox-clearButton i';
-  public static messageBarSelector: string = 'div.ms-MessageBar--success';
-  public static messageBarWarningSelector: string = 'div.ms-MessageBar--warning';
-  public static tableRowSelector: string = '[class*="data-table-new__tableRowContainer"]';
-  public static flexPaneApplySelector: string = '#flexPaneApply';
-  public static loadingIndicatorSelector: string = '[data-testid=spinner]';
-  // Add button selector for tables
-  public static tableAddButton: string = '[data-testid="add"]';
-
-  public dropdownOptionSelector = 'button.ms-Dropdown-item:not([class*="Selected"]):not(.is-disabled)';
-  public isProd = process.env.E2E_ENV === 'prod';
   private foundTeam = false;
   public getUrl() {
     return browser.getCurrentUrl();
@@ -237,8 +220,8 @@ export class HtmlUtil {
 
     // MoPo fails often when we click some side nav bar redirecting to the dashboard we would try
     // until this get fixed
-    if ((await htmlUtil.getUrl()) === 'https://admin-int.teams.microsoft.net/dashboard' ||
-        (await htmlUtil.getUrl()) === 'https://admin-dev.teams.microsoft.net/dashboard'
+    if ((await htmlUtil.getUrl()) === 'https://test.net/dashboard' ||
+        (await htmlUtil.getUrl()) === 'https://test.net/dashboard'
     ) {
       e2eLogger('goToPage() 2' +  await htmlUtil.getUrl());
 
