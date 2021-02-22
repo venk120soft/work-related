@@ -47,12 +47,20 @@ To get Browser logs for error, warning etc..
   private static getBrowserLogs = async (searchText: string) => {
     return await browser.manage().logs().get('browser').then((browserLogs) => {
       let logMessage = '';
-      for (const log of browserLogs) {
-        if (log.message.indexOf(searchText) !== -1) {
-          logMessage = log.message;
-          break;
+      browserLogs.forEach((log) => {
+        // log levels are
+        // WARN => 1000
+        // DEBUG => 700
+        // SEVERE => 900
+        // INFO => 800
+        if(log.level>900){
+          // For error
+          if (log.message.indexOf(searchText) !== -1) {
+            logMessage = log.message;
+            break;
+          }
         }
-      }
+      });
       return logMessage;
     });
   }
