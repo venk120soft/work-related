@@ -58,3 +58,28 @@ class TelemetryHelper {
    // some logic by using all above declarations uiConfig,history, telemetryService
   };
 }
+
+// *******************************************************************************************************************************
+ const trackUserActionSpy = jest.spyOn(telemetryHelper, 'trackUserAction');
+spySetFinalAppList.mockImplementationOnce(jest.fn());
+(permissionService.isPathFlighted as jest.Mock<any>).mockReturnValue(true);
+spyAppsCatalogDSLoadData.mockImplementationOnce(() => Observable.of({}) as any);
+spyHasSubmitToApprovalFlightingKey.mockImplementationOnce(() => true);
+    spyAppsCatalogDSLoadData.mockImplementationOnce(() => Observable.throw({
+      status: 500
+    }) as any);
+spyAppsOfferListDSLoadData.mockImplementationOnce(() => Observable.throw({
+  errorCode: MonetApiErrorCode.GenericAPIFailure,
+  error: {
+    correlationId: '1234'
+  }
+}) as any);
+spyCachedOrgItemsGetData.mockReturnValue([{
+  id: '1',
+  displayName: 'test tenant',
+  countryLetterCode: 'US',
+  verifiedDomains: [{ name: 'test@domain.com' }]
+}
+]);
+addAppToTeamMock.mockImplementationOnce(() => Observable.throw({errorCode: MsGraphErrorCode.AppForbiddenAction}));
+spyGetSelectedApp.mockImplementation(() => app as ManageAppsCatalogViewModel);
