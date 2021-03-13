@@ -29,6 +29,14 @@ describe('Event tracker for telemetry helper', () => {
   it('should render Telemetry Tracker properly', () => {
     expect(component).toMatchSnapshot();
   });
+  
+  it('should set the state',() => {
+    const setState = jest.spyOn(instance, 'setState');
+    instance.isUserActive(true);
+    expect(setState).toHaveBeenCalled();
+    expect(instance.state.isActive).toBe(true);
+  });
+
   it('should handle events of its children', () => {
     const buttonComponent = component;
     (component.instance() as any).handleEvent = jest.fn(); 
@@ -38,6 +46,7 @@ describe('Event tracker for telemetry helper', () => {
       expect((component.instance() as any).handleEvent).toHaveBeenCalled();
     }, 0);
   });
+
   it('should be able to handle events ', () => {
     const mockObj = {
       feature: 'Test',
@@ -54,9 +63,17 @@ import { uiConfig } from 'common/config';
 import { history } from 'common/config/history';
 import { telemetryService } from './telemetry.service';
 class TelemetryHelper {
+  this.state={
+    isActive:false;
+  }
   public trackUserAction = (props: any) => {
    // some logic by using all above declarations uiConfig,history, telemetryService
   };
+  private isUserActive=(val:boolean)=>{
+    this.setState({
+      isActive: val
+    })
+  }
 }
 
 // *******************************************************************************************************************************
@@ -83,3 +100,58 @@ spyCachedOrgItemsGetData.mockReturnValue([{
 ]);
 addAppToTeamMock.mockImplementationOnce(() => Observable.throw({errorCode: MsGraphErrorCode.AppForbiddenAction}));
 spyGetSelectedApp.mockImplementation(() => app as ManageAppsCatalogViewModel);
+
+// *******************************************************************************************************************************
+// For get call:
+    (httpService.get as jest.Mock<any>).mockImplementationOnce(() => Observable.of());
+    drivenUpgradeDataService.getUpgradeStatus();
+    const spy = jest.spyOn(drivenUpgradeDataService, 'getRequestHeaders' as any);
+    expect(spy).toHaveBeenCalled();
+    expect(httpService.get).toHaveBeenCalled();
+
+// Throw Error:
+    (httpService.get as jest.Mock<any>).mockImplementationOnce(() => Observable.throw('error'));
+    expect(drivenUpgradeDataService.getUpgradeStatus().subscribe).toThrowError();
+
+// For put call:
+   (httpService.put as jest.Mock<any>).mockImplementationOnce(() => Observable.of());
+    drivenUpgradeDataService.setUpgradeStatus(ActionState.Postponed, 'test');
+    const spy = jest.spyOn(drivenUpgradeDataService, 'getRequestHeaders' as any); // some service insi
+    expect(spy).toHaveBeenCalled();
+    expect(httpService.put).toHaveBeenCalled();
+
+// Throw error:
+    (httpService.put as jest.Mock<any>).mockImplementationOnce(() => Observable.throw('error'));
+    expect(drivenUpgradeDataService.setUpgradeStatus(ActionState.Postponed, 'test').subscribe).toThrowError();
+    const spy = jest.spyOn(loggerService, 'error');
+    expect(spy).toHaveBeenCalled();
+
+
+// Private/public method Testing setState 
+    const instance = (component.instance() as any);
+    const setState = jest.spyOn(instance, 'setState');
+    const dropdownItem: IDropdownOption = {
+      text: 'hi',
+      key: 'hey'
+    };
+    instance.onActivityTypeChanged(dropdownItem);
+    expect(setState).toHaveBeenCalled();
+    expect(instance.state.selectedActivity).toBe(dropdownItem.key);
+
+// Calling componentWillmount
+// any api calls should be checked
+    navigationViewStore.selectedKey = null;
+    const setSelectedKey = jest.spyOn(navigationViewStore, 'setSelectedKey');
+    instance.componentWillMount();
+    expect(setSelectedKey).toHaveBeenCalled();
+
+  test('deos not reload page after submition', () => {
+    const wrapper = shallow(<TodosForm />)
+    // an object with some function
+    const event = { preventDefault: () => {} }
+    // mocks for this function
+    jest.spyOn(event, 'preventDefault')
+    wrapper.find('form').simulate('submit', event)
+    // how would you know that function is called
+    expect(event.preventDefault).toBeCalled()
+  })
