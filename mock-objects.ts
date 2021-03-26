@@ -155,3 +155,18 @@ spyGetSelectedApp.mockImplementation(() => app as ManageAppsCatalogViewModel);
     // how would you know that function is called
     expect(event.preventDefault).toBeCalled()
   })
+// Mock implementation
+    it('should load app catalog by id', () => {
+    mcasAppCatalogDataService.loadAppCatalogById = jest.fn().mockImplementationOnce(() => Observable.of({
+      id: '12345'
+    }));
+    mcasAppCatalogDataStore.loadAppCatalogById('12345')
+      .subscribe((res) => {
+        expect(res.id).toBe('12345');
+    });
+
+    mcasAppCatalogDataStore.loadAppCatalogById('12345')
+      .subscribe((res) => {
+        expect(res.id).toBe('12345');
+    });
+  });
