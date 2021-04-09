@@ -76,3 +76,10 @@ To switch to new Window this helps when we work with popups
     await htmlUtil.waitForLoading();
   }
 ```
+Swith to new window when it is iframe:
+We can check this: https://github.com/angular/protractor/issues/1846
+In frame/iframe case we should depend on the web driver
+```javascript
+const iframeElement= document.getElementById('iframeId')
+browser.driver.switchTo().frame(iframeElement)
+```
