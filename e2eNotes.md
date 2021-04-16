@@ -83,3 +83,33 @@ In frame/iframe case we should depend on the web driver
 const iframeElement= document.getElementById('iframeId')
 browser.driver.switchTo().frame(iframeElement)
 ```
+for refreshing the page, for simulating the click event
+```javascript
+await browser.refresh()
+var simulateClick = function (elem) {
+    // Create our event (with options)
+    var evt = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
+    // If cancelled, don't dispatch our event
+    var canceled = !elem.dispatchEvent(evt);
+};
+
+var buttonToClick = document.getElementById('account-settings-save-button');
+simulateClick(buttonToClick);
+```
+for getting the elements in protractor using executeScript
+```javascript
+let el = await browser.executeScript('return document.querySelector("h3").innerHTML');
+let inputQuantity: string | number = await browser.executeScript(`return document.querySelector('[class*="line-item-quantity"] input').value`);
+inputQuantity = parseInt(inputQuantity.toString().trim(), 10);
+expect(typeof inputQuantity).toBe('number');
+
+const inputElement = await htmlUtil.getElement(ManageSelector.iframeLicenseQuantityInputValue);
+const value = await inputElement.getAttribute('value');
+await browser.executeScript(`document.querySelector('[class*="line-item-quantity"] input').setAttribute('value','${value + 1}')`);
+await browser.executeScript('arguments[0].setAttribute("value", arguments[1])', inputElement, value +1);
+await browser.executeScript('arguments[0].scrollIntoView(true);');
+```
