@@ -1,3 +1,13 @@
+```javascript
+// For settingup the size in env and run the server:
+npm start $env:NODE_OPTIONS="--max-old-space-size=8192"
+// for running the single e2e we should add full path
+npm run e2e:single e2e/teams-apps/app-permissions-consent-flow.e2e.ts
+// for running the unit tests we can simply use
+npm run test:update appLincese
+// For updating the web driver to latest, whenever you receive an error for chrome driver needs an update :
+node node_modules/protractor/bin/webdriver-manager update
+```
 We can look for the elements in the browser using below
 ```javascript
 export class ManageSelector {
