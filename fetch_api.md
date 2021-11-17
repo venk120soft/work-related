@@ -41,7 +41,7 @@ import { forkJoin } from 'rxjs/observable/forkJoin';
 // this.createNewAccountsForFRE() is an other api call
 ```
 
-Making the changes to observable objects (array, object) only through toJS method
+Making the changes to observable objects (array, object) is possible only through toJS method
 ```javascript
 import { action, observable, runInAction, toJS } from 'mobx';
 const updatedPolicy = toJS(policy);
