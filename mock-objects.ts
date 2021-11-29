@@ -164,9 +164,4 @@ spyGetSelectedApp.mockImplementation(() => app as ManageAppsCatalogViewModel);
       .subscribe((res) => {
         expect(res.id).toBe('12345');
     });
-
-    mcasAppCatalogDataStore.loadAppCatalogById('12345')
-      .subscribe((res) => {
-        expect(res.id).toBe('12345');
-    });
   });
