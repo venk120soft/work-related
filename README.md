@@ -1,4 +1,38 @@
 # Work-related
+
+If we have large number of records of type objects and everytime looking at the result set and filtering out is repetative process and it takes lot of time. So Instead we can covert the list into hashmap and access them with the distinct key is always saves lot of effort, as hashtable gives the result in O(1) time
+
+```javascript
+class PurchasedAsset{
+  @serializable(primitive())
+  @observable
+  public saasBigCatalogId: string;
+
+  @serializable(primitive())
+  @observable
+  public assetId: string;
+
+  @serializable(primitive())
+  @observable
+  public saasProductId: string; // distinct id
+}
+
+  public get getPurchasedAssetsHashMap() {
+    return this.createHashMap(this.purchasedAssetList);
+  }
+  
+  // just create the hashMap of list of objects by taking the distinct id as key for each record
+  private createHashMap(purchasedAssets: PurchasedAsset[]) {
+    const appAssetObject: { [s: string]: PurchasedAsset } = {};
+    (purchasedAssets || []).forEach((value) => {
+      appAssetObject[value.saasProductId] = value;
+    });
+    return appAssetObject;
+  }
+  // Access in O(1) time complexity
+  console.log(this.getPurchasedAssetsHashMap['distinctId'])
+```
+
 complex operations worked
 Writing E2E cases can be found in e2eNotes.md
 
