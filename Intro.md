@@ -2,7 +2,9 @@ In One Word: Best Collegue
 In 3 words: Process Oriented, Best 
 
 My Name is Venkatesh Chunchu I'm an experienced software developer who constantly seeks out innovative solutions to everyday problems.
-Currently Working for Microsoft in Teams Admin Center Product. I have extensive experience in working with Object Oriented Programming using .Net stack and Client side technologies using javascript libraries.
+Currently Working for Microsoft in Teams Admin Center Product. Also I have worked on Office 365 and Teams. I have extensive experience in working with Object Oriented Programming using .Net stack and Client side technologies using javascript libraries. 
+
+Before this project I used to Work for Metlife which is one of the health care insurance provider. where in I was handling the team of 4 who is working from India and Srilanka
 
 Apart from Work, I enjoy mingle with friends and coleagues we go on hiking,playing board games, watching movies.
 
