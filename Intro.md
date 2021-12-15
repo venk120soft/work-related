@@ -7,7 +7,7 @@ Currently Working for Microsoft in Teams Admin Center Product. I have extensive 
 Apart from Work, I enjoy mingle with friends and coleagues we go on hiking,playing board games, watching movies.
 
 ## About Project: 
-In short: Teams Admin Center product is  by the the Admins in an Organization which helps them to Monetize app licenses for employees, Customize and Configure the Teams Application create and setup the different policies can be permission polices, setup policies, meeting policies. Insights of an each app, Dial plans. and Technologies used: React JS, Web API and C#
+In short: Teams Admin Center product is used by the Admins in an Organization which helps them to Monetize app licenses for employees, Customize and Configure the Teams Application create and setup the different policies can be permission polices, setup policies, meeting policies. Insights of an each app, Dial plans. and Technologies used: React JS, Web API and C#
 
 ## Daily Activities:
 We have scrum planned for every 1 month, before planning the scrum we have retrospective meetings to address what are left from previous scrum based on the decisions we move some of the items to next sprint.
