@@ -2,6 +2,9 @@ For logging errors
 https://www.thecrazyprogrammer.com/2019/12/javascript-read-and-write-to-text-file.html
 
 ```javascript
+import { writeFile } from 'fs';
+import { browser } from 'protractor';
+
  public static logErrors = async (fileName: string) => {
     await browser.manage().logs().get('browser').then((browserLogs) => {
       let error = '';
@@ -32,4 +35,21 @@ For Clear logs: Once we read the logs it will get cleared
   public static clearLogs = async () => {
     await browser.manage().logs().get('browser');
   }
+```
+Search for specific text in logs
+```javascript
+  private static getBrowserLogs = async (searchText: string) => {
+    return await browser.manage().logs().get('browser').then((browserLogs) => {
+      let logMessage = '';
+      for (const log of browserLogs) {
+        if (log.message.indexOf(searchText) !== -1) {
+          logMessage = log.message;
+          break;
+        }
+      }
+      return logMessage;
+    });
+  }
+  
+  const error= await getBrowserLogs('Event: ConsentError');
 ```
