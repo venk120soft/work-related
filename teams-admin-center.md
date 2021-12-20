@@ -37,7 +37,17 @@ We have used the Purchase Blend experience.
 We have scrum planned for every 1 month, before planning the scrum we have retrospective meetings to address what are left from previous scrum, based on the decisions we move some of the items to next sprint.
 
 As a Feature lead, I used to breakdown the feature work items into multiple tasks and sub tasks and assign accordingly to feature crew. 
-Then every day we have sync to get the status and unblocking each other. For every work(Task/Bug) before workign on it we create the work item under the feature work item 
+Then every day we have sync to get the status and unblocking each other. For every work(Task/Bug) before working on it we used to create the work item under the specific feature work item and the Remaining time for the work to complete which helps in burndown the progress every day in sprint.
+
+To finish any feature we look at the Definition of Done(DOD)
+- Development completed
+- Test completed
+- E2E automation completed
+- Telemetry logs, and charts are completed
+- Security, Privacy, Compliance, Localization, Feature accesibility for the Disablity users is in place
+- Feature flow diagram
 
 ## What is More Important to you?
 Work Life Balance
+
+
