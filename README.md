@@ -1,4 +1,9 @@
 # Work-related
+Performance optimization: https://3perf.com/talks/web-perf-101/
+
+MobX best practices: https://mobx.js.org/defining-data-stores.html
+
+Cloud computing: https://azure.microsoft.com/en-us/overview/what-is-cloud-computing/#benefits
 
 ## Create HashMap for large Records to access quickly
 If we have large number of records of type objects and everytime looking at the result set and filtering out is repetative process and it takes lot of time. So Instead we can covert the list into hashmap and access them with the distinct key is always saves lot of effort, as hashtable gives the result in O(1) time
