@@ -84,4 +84,6 @@ Work Life Balance
 - [Teams Ring Audience - Overview (visualstudio.com)](https://domoreexp.visualstudio.com/Teamspace/_wiki/wikis/Teamspace.wiki/2220/Teams-Ring-Audience)
 - [Rings - Overview (azure.com)](https://dev.azure.com/domoreexp/Teamspace/_wiki/wikis/Teamspace.wiki/242/Rings)
 - [Rings - Overview (visualstudio.com)](https://domoreexp.visualstudio.com/Teamspace/_wiki/wikis/Teamspace.wiki/242/Rings)
+- [Brief introduction for each ring and how Teams runs ring-based rollout](https://domoreexp.visualstudio.com/Teamspace/_wiki/wikis/Teamspace.wiki/11410/Ring-rollout-logistics)
+- [Tenant ids for each ring?](https://domoreexp.visualstudio.com/Teamspace/_git/Teamspace-Web?path=%2Fecs-configs%2Fconfig-ecs-audience-prod.json&_a=contents&version=GBdevelop)
 
