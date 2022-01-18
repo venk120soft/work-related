@@ -87,3 +87,13 @@ Work Life Balance
 - [Brief introduction for each ring and how Teams runs ring-based rollout](https://domoreexp.visualstudio.com/Teamspace/_wiki/wikis/Teamspace.wiki/11410/Ring-rollout-logistics)
 - [Tenant ids for each ring?](https://domoreexp.visualstudio.com/Teamspace/_git/Teamspace-Web?path=%2Fecs-configs%2Fconfig-ecs-audience-prod.json&_a=contents&version=GBdevelop)
 
+## Acronyms we have Used
+- MEU(Monthly Engineering Updates)
+- MSR(Monthly Service Reviews) 
+- MBR(Monthly Business Reviews) (discussed with Aria and Jarvis chart trends)
+- FMEA(Failure Mitigation) 
+- MAU(Monthly Active Users) 
+- AUP(Active User Pair)
+- DTB(Discover Try and Buy) Feature crew
+- D&M() Feature crew
+- A&O(Analyze and ) Feature crew
