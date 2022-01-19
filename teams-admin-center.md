@@ -51,6 +51,31 @@ We provide the insights to the user about the application, where in they can ins
 ## Setup Policies Group Policy Assignment
 We had and option to Group policy assignment for serup policies using Powershell so Implemented the UI for Group Policy Assignment of Setup policies where in Admin can rank the policies based on the group, policy and can do the CRUD operations
 
+# Things to consider for building large enterprise application.
+Large Application should have all the telemetry. 
+
+1) no of clicks for all the buttons, tabs, links
+2) load time of feature
+3) We should be able to track no of users using the feature by tenants, regions, environment
+4) we should create the charts to see it visually through Power BI/ Aria/ Geneva or some other app for looking to see the trends month on month through bar chart, line chart, etc. This will also help us in development time. 
+5) should be able to filter the records i.e we should have funnel view for each metrics to understand where we are lacking and how we can improve the product
+6) All these metrics should be filtered out based on the role of the user
+7) We should get the Requirements of the feature behavior for each role and whom are we enabling
+8) We must have feature flag defined for each feature we are introducing; this will help us enabling/disabling the feature when required in different environments
+9) We have ECS/o365rm for handling the feature flags (Big Red Switch (BRS)) where we control features to roll out to different regions, rings, environments, tenant-based rollout
+10) If we have dependency in our feature, it's better to have metrics tracked in our own product for all of the metrics 
+
+- FMEA report:
+This will help us to track how are we handling the failures and severity of failures of the feature and what scenario the failure may/might happen, do the user is blocked on it or not.
+
+- MSR(Monthly Service Review) report:
+- MBR(Monthly Business Review) report:
+
+ For api:
+	load time of an api
+	success/failure rate
+	In case of failure, track the failures by status codes ex: 401/404/500 for further investigation. Does caching in client side can we get the more performance.in case of long running jobs caching helps a lot. Load only necessary (on demand/ lazy loading)
+
 ## Daily Activities:
 We have scrum planned for every 1 month, before planning the scrum we have retrospective meetings to address what are left from previous scrum, based on the decisions we move some of the items to next sprint.
 
