@@ -1,4 +1,4 @@
-# RPM (Remote Patient Monitoring)
+# RPM (Remote Patient Monitoring) Buy 2 Pay
 ## Overview of the Business Application
 RPM stands for Remote Patient Monitoring
 
