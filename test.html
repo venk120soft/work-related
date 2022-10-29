@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Avg down to the stock</h1>
+    <table>
+        <tr>
+            <td>
+                <label for="noOfExistingStocks">No of Existing stocks you have: </label>
+            </td>
+            <td>
+                <input type="text" id="noOfExistingStocks" name="noOfExistingStocks" placeholder="10">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="avgForExistingStock">Average for Existing stock:</label>
+            </td>
+            <td>
+                <input type="text" id="avgForExistingStock" name="avgForExistingStock" placeholder="8">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="currentPrice">Current price: </label>
+            </td>
+            <td>
+                <input type="text" id="currentPrice" name="currentPrice" placeholder="0.17">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+
+                <label for="avgPriceYouLooking">Average price you looking: </label>
+            </td>
+            <td>
+                <input type="text" id="avgPriceYouLooking" name="avgPriceYouLooking" placeholder="0.25">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+
+                <label for="incrementStocksBy">Increment stocks by:</label>
+            </td>
+            <td>
+                <input type="text" id="incrementStocksBy" name="incrementStocksBy" placeholder="1"><br><br>
+            </td>
+        </tr>
+    </table>
+
+    <button onclick="myFunction()">Click me test</button>
+    <div id="testing"></div>
+    <div id="demo"></div>
+
+    <script>
+        const getNoOfStocksToBuyForAverage = (
+            noOfExistingStocks,
+            avgForExistingStock,
+            currentPrice,
+            avgPriceYouLooking,
+            incrementStocksBy = 1
+        ) => {
+            debugger;
+            let noOfStocksToBuy = 0;
+
+            let resultedAvg = avgForExistingStock || 0;
+
+            // This is the amount you have lost so far and wanted to recover
+            const yourLostSofar =
+                avgForExistingStock * noOfExistingStocks - currentPrice * noOfExistingStocks;
+
+            do {
+                const totalStocks = noOfStocksToBuy + noOfExistingStocks;
+                // const totalPriceYouSpentOnStocks = totalStocks * avgPriceYouLooking;
+                const t = noOfStocksToBuy * currentPrice + yourLostSofar;
+                resultedAvg = t / totalStocks;
+                if (avgPriceYouLooking < resultedAvg) {
+                    noOfStocksToBuy += incrementStocksBy;
+                }
+            } while (avgPriceYouLooking < resultedAvg);
+
+            const youHaveToSpend = noOfStocksToBuy * currentPrice
+            return { noOfStocksToBuy, resultedAvg, youHaveToSpend };
+        };
+
+        function myFunction() {
+            // No of Existing stocks you have
+            const noOfExistingStocks = Number(document.getElementById("noOfExistingStocks").value)
+            const avgForExistingStock = Number(document.getElementById("avgForExistingStock").value)
+            // Current stock price
+            const currentPrice = Number(document.getElementById("currentPrice").value)
+            // TO make average down 
+            const avgPriceYouLooking = Number(document.getElementById("avgPriceYouLooking").value)
+            // it's an optional
+            const incrementStocksBy = Number(document.getElementById("incrementStocksBy").value)
+
+            const result = getNoOfStocksToBuyForAverage(
+                noOfExistingStocks,
+                avgForExistingStock,
+                currentPrice,
+                avgPriceYouLooking,
+                incrementStocksBy
+            );
+            const avgPricePerStock = isNaN(result.resultedAvg.toFixed(2)) ? 0 : result.resultedAvg.toFixed(2)
+            document.getElementById("demo").innerHTML = `<div style="color: gray;">
+            <h2>To make an average of <span style="color: green;">$${avgPricePerStock}</span> per stock</h2>
+            <h2>You should buy : <span style="color: green;">${result.noOfStocksToBuy} </span> stocks, which will cost: <span style="color: green;"> $${result.youHaveToSpend.toFixed(2)} .</span></h2>  
+            </div
+            `
+        }
+    </script>
+
+</body>
+
+</html>
