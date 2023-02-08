@@ -1,0 +1,3 @@
+
+- Test how to check the api requests performance with different load(1/10/1000/100k. users) from different locations **JMeter** is one of the tool to measuare
+- Same has to be checked for UI application as well one of the tool is  ** https://loadninja.com/features/ **
